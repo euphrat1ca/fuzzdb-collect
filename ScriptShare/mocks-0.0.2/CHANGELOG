@@ -1,0 +1,19 @@
+
+New for MOCKS version 0.0.2
+
+  * Added support for upstream proxy connection. MOCKS can now relay all
+    traffic by acting like a client for another proxy server. This is not
+    yet fully implemented: BIND commands are not yet relayed. Supported
+    upstream proxy protocols: HTTP CONNECT, SOCKS4, SOCKS5.
+    For details see the UP_PROXY_* variables in mocks.conf.
+  
+  * Added IP-based client filter. MOCKS can now reject client connections
+    based on filtering rules.
+    For details see the FILTER_* variables in mocks.conf.
+
+  * Added bounding IP option. You can tell MOCKS the IP address it should
+    listen for client connections on. By default it binds like MOCKS 0.0.1 to 
+    all interfaces.
+    For details see the MOCKS_ADDR variable in mocks.conf.
+
+  * Fixed some include problems that were causing GCC to issue some warnings.

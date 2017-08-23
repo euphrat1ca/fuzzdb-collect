@@ -1,0 +1,213 @@
+
+			Readme file for MOCKS 0.0.2
+		written by Dan Horobeanu <dhoro@spymac.com>
+				25 Nov 2004
+
+
+Table of contents
+*****************
+
+    1. What is MOCKS?
+    2. MOCKS Files
+    3. Compiling and Running MOCKS
+    4. Configuring MOCKS
+    5. Suggestions and Bug Reports
+    6. License Agreement & Discalimer
+    
+    
+    
+1. What is MOCKS?
+*****************
+    MOCKS stands for My Own soCKs Server.
+    It is an RFC1928 compliant SOCKSv5 server. Momentarily only TCP
+IPv4 connections are supported but, depending on the number of people
+interested in using MOCKS, support for UDP and IPv6 might be implemented
+in future versions.
+    So far MOCKS 0.0.2 has been tested with Linux 2.4.26. 
+
+
+2. MOCKS Files
+**************
+    The MOCKS package contains these files:
+	* README	   This file
+	* COPYING	   The GNU General Public License version 2
+	* TODO		   Text file containing notes on what features
+			   should be implemented in future versions of
+			   MOCKS.
+	* src/child.c    |
+	* src/child.h    |
+	* src/error.c 	 |
+	* src/error.h    | 
+	* src/misc.c     |  MOCKS source code
+	* src/misc.h     |  
+	* src/socks.c    |
+	* src/socks.h    |
+	* src/up_proxy.c |
+	* src/up_proxy.h |
+        * build            Build script to compile MOCKS
+	* mocks.conf       MOCKS sample configuration file
+	* mocks		   The MOCKS program as an ELF executable compiled
+			   with gcc 3.2.2 under Linux 2.4.26
+	
+	
+3. Compiling and Running MOCKS
+******************************	
+    Due to the simplicity of MOCKS, a make file was uncalled for. You
+can compile MOCKS with the build script included in this package (build) 
+or with the following command:
+
+	gcc -lnsl -o mocks child.c error.c misc.c socksd.c up_proxy.c
+
+    If you encounter any problems during compilation don't hesitate to
+contact me (see section 5 of this file for details).
+    You can then control MOCKS like this:
+    Starting server:
+			./mocks start
+    Shutting it down:
+			./mocks shutdown
+    Get command line help:
+			./mocks --help
+
+
+4. Configuring MOCKS
+********************
+    You can customize MOCKS via a configuration file. The default
+configuration file is 'mocks.conf' located in the same directory as
+the 'mocks' executable. This distribution comes with an example of 
+such a file. You can specify another configuration file with the
+'-c' command line option.
+    mocks.conf is a text file in which each line of text has the
+following syntax:
+	VAR = VALUE
+where, VAR is the name of the global variable you want to set and
+VALUE is the value you want to set it to. VAR can only be one of 
+the following:
+    
+    BACKLOG			Backlog value for listen().
+				Default: 5
+
+    BIND_TIMEOUT		Maximum duration of a BIND SOCKS command
+				completion, in seconds. In other words,
+				how long to keep a listening socket opened
+				for the client if no connection arrives
+				for it.
+				Default: 30
+
+    BUFFER_SIZE			Length, in bytes, of buffer used in the
+				socket data traffic.
+				Default: 65536
+
+    CONNECTION_IDLE_TIMEOUT	Maximum duration in which no data traffic
+				occures on a client-target connection, in
+				seconds.
+				Default: 300
+
+    LOG_FILE			Specifies a log file that MOCKS should
+				use to log special events and errors.
+				Default: mocks.log
+
+    MAX_CONNECTIONS		Maximum number of client connections
+				simultaneously active.
+				Default: 50
+
+    NEGOTIATION_TIMEOUT		Maximum allowed duration of the SOCKSv5
+				client-server negotiation in seconds. If 
+				a client failes to state its business 
+				during this amount of time, the connection
+				will be terminated.
+				Default: 5
+
+    PID_FILE			Specifes the file where MOCKS should
+				write its PID (process ID)  when it is
+				running.
+				Default: mocks.pid
+
+    MOCKS_ADDR                  The IP address MOCKS should bind to.
+				Default: 0.0.0.0 (bind to all local interfaces)
+
+    PORT			The port on which the SOCKS server
+				should listen for client connctions.
+				Default: 1080
+
+    SHUTDOWN_TIMEOUT		How long to wait for MOCKS daemon to shut
+				down cleanly before killing it. This is used
+				when mocks executable is invoked with the 
+				'shutdown' action and is given in seconds.
+				Default: 3
+
+    FILTER_POLICY               MOCKS's client filter policy. This can be
+                                one of ALLOW or DENY and tells MOCKS what 
+				to do when a client attempts connection.
+				One can then use FILTER_EXCEPTION variables
+				to modify MOCKS behaviour for some specific
+				clients. For instance, if you set FILTER_POLICY
+				to DENY, all clients will be denied
+				connection except for those that match 
+				one or more FILTER_EXCEPTION statements.
+				Default: ALLOW
+
+    FILTER_EXCEPTION		This is meant to match a range of IP addresses.
+				It is basically an IP address/mask pair.
+				The mask is optional (that is, both
+				'10.20.31.0/24' and '10.20.31.52' are valid
+				values of this variable). When used, the mask
+				is the number of heading bits that a client
+				IP address and the FILTER_EXCEPTION IP address
+				must have in common to yield a match. If no
+				mask is specified, 32 is assumed (exact
+				IP address, no subnet).
+				There may be more than one FILTER_EXCEPTION 
+				statements. 
+				Default: none
+
+    UP_PROXY_TYPE		MOCKS can use an upstream proxy to relay all
+				the traffic from its clients. For now, 
+				upstream proxy support has been implemented
+				for HTTP CONNECT, SOCKS 4 and 5 proxies. This
+				variable selects the upstream proxy type.
+				Valid values are: HTTPCONNECT, SOCKS4 and 
+                                SOCKS5.
+				Setting this variable requires that you also
+				set UP_PROXY_ADDR and UP_PROXY_PORT!
+				Default: none
+				
+    UP_PROXY_ADDR		IP address of the upstream proxy that is to
+				be used for further traffic relaying.
+				Setting this variable requires that you also
+				set UP_PROXY_TYPE and UP_PROXY_PORT!
+				Default: none
+
+    UP_PROXY_PORT		TCP port of upstream proxy server.
+				Setting this variable requires that you also
+				set UP_PROXY_TYPE and UP_PROXY_ADDR!
+				Default: none
+		
+    UP_PROXY_USER		MOCKS supports user/passwd authentication to
+				the upstream proxy. This variable is optional
+				and specifies the user name MOCKS should use
+				to authenticate. When this is not set, MOCKS
+				will not attempt authetication.
+				Default: none
+
+    UP_PROXY_PASSWD		Password to use when authenticating to an
+				upstream proxy. This is used together with
+				UP_PROXY_USER in an authentication attempt.
+				Default: none
+
+
+5. Suggestions and Bug Reports
+******************************
+    For any suggestions, bug reports or just for telling me you are using
+MOCKS, email me, Dan Horobeanu at:
+    
+			dhoro@spymac.com
+    
+    
+6. License Agreement & Disclaimer
+**********************************
+    MOCKS is distributed under the GNU General Pulic License (GPL). For
+a copy of that license, please read the file COPYING, which should have
+been distributed with this software.
+
+    
+    

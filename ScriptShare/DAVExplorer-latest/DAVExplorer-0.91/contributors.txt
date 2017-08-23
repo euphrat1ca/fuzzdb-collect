@@ -1,0 +1,34 @@
+The following people and organizations contributed to DAV Explorer.
+Many thanks to everybody.
+
+The original developers were Gerair Balian, Mirza Baig, Robert Emmery,
+Thai Le, and Tu Le from the UCI ICS126B class Winter 1998.
+DAV Explorer uses the HTTPClient library from Ronald Tschalär
+(http://www.innovation.ch/java/HTTPClient/).
+The XML parser sourcecode used in DAV Explorer was published by
+Microsoft in 1997, royalty free. The original announcement is at
+http://lists.xml.org/archives/xml-dev/199706/msg00018.html
+Neither the license information nor the sourcecode or any documentation
+are available on Microsoft's website anymore. However, a mirror of
+the Microsoft documentation is available at
+http://mie.paichai.ac.kr/users/Frog0214/workshop/xml/msxml/xmlparse.htm
+This includes the EULA for the parser:
+http://mie.paichai.ac.kr/users/Frog0214/workshop/xml/msxml/License.htm
+
+Max Slabyak, Matt Story and Hyung Kim of the UCI ICS125 class Spring 2003
+developed the basic DeltaV functionality, which was integrated into
+the base line by Joachim Feise.
+
+Joachim Feise and Yuzo Kanomata maintain DAV Explorer since 1999.
+The contact is dav-exp@ics.uci.edu
+
+Thanks to the following people who reported bugs or contributed
+fixes and improvements:
+- Dennis Craig
+- Eric Giguere
+- Michelle Harris
+- Thierry Janaudy
+- Karen Schuchardt
+- Brian Johnson
+- Thoralf Rickert
+- John Barton

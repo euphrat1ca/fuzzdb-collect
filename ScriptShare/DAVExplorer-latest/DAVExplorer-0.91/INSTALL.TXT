@@ -1,0 +1,49 @@
+Installation procedure
+
+The preferred Java version to run DAV Explorer is Java 2 (JDK 1.2 and above.)
+DAV Explorer also runs with JDK 1.1.8 and Swing 1.1.1. However, this may
+restrict the capabilities of DAV Explorer.
+
+Note: If not compiling from source, skip steps 1-3 and 5.
+If use of SSL is not required, step 4 can also be skipped.
+
+1. Login to the DAV Explorer Subversion archive with any Subversion client.
+   The Subversion archive is located at
+   http://louvre.ics.uci.edu:8080/svn/DAVExplorer/
+   NOTE: the archive location may change in the near future, so be sure to check
+   the DAV Explorer download website http://www.ics.uci.edu/~webdav/download.html
+   for any changes.
+
+2. Navigate to your chosen source directory.
+
+3. Retrieve all DAV Explorer source files from the DAV Explorer Subversion
+   archive, from the trunk directory, using your favorite Subversion client tool.
+   The command line format:
+   svn checkout http://louvre.ics.uci.edu:8080/svn/DAVExplorer/trunk DAVExplorer
+
+4. If SSL support is required, retrieve the Java Secure Socket Extensions from
+   http://java.sun.com/products/jsse/
+   Install the JSSE files according to the JSSE documentation.
+   Note that from JDK 1.4 on, JSSE is included in the JDK.
+   Make sure that the appropriate X.509 certificates are installed at the
+   Webserver.
+
+5. Compile all Java source files with Java 2 by running make in the dav_explorer
+   directory directly below your source directory. This also creates a
+   DAVExplorer.jar file in the dav_explorer directory.
+   The DAV Explorer sources do not compile without the JSSE files present.
+   Note that the Makefile does not work under MS Windows. Instead, running the
+   make.bat file in the dav_explorer directory achieves the same result.
+   Under MS Windows, you can also run the DAVjar.bat file from the dav_explorer
+   directory to create the DAVExplorer.jar file.
+   Under Unix, the DAVjar.sh shell script serves the same purpose.
+   We also provide an Eclipse workspace file in the source distribution.
+
+6. Run the DAV Explorer.
+   Under MS Windows, run the DAVExplorer.bat file from the dav_explorer directory.
+   Under Unix, run the DAVExplorer.sh shell script from the dav_explorer directory.
+   You can also run DAVExplorer by using the command 'java -jar DAVExplorer.jar'.
+   For SSL support, run DAVExplorerSSL.bat or DAVExplorerSSL.sh, respectively.
+   Alternatively, the command 'java -jar -Dssl=true DAVExplorer.jar' can be used.
+   SSL support can also be selected from the Edit menu.
+   Under MacOS 9, you can use the provided MRJ wrapper DAVExplorer.bin.

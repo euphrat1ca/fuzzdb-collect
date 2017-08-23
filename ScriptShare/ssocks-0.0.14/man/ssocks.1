@@ -1,0 +1,39 @@
+.\"   socks.1
+.\"
+.\"   Man page for socks
+.\"
+.TH ssocks 1 "3 Apr 2011" "ssocks" "ssocks manual"
+.SH NAME
+ssocks \- Get information about ssocks
+.SH SYNOPSIS
+
+
+.SH DESCRIPTION
+.B ssocks
+socks5 relay, it runs a socks server on your localhost interface, and
+relays all data to the server specified in parameter (works but under dev).
+Useful to bypass browser limitation with authentication.
+
+.SH OPTIONS
+.IP "--verbose"
+Increase the verbose level, can be add twice for debug mode
+.IP "--background"
+Run in background
+.IP "--socks host:port"
+Socks address (domaine or ip) and port
+.IP "--uname username"
+Set socks username
+.IP "--passwd password"
+Set socks password
+.IP "--listen port"
+Set server listen port
+.SH "EXAMPLES"
+	ssocks --socks socksserv.com:1080
+
+	ssocks --socks localhost:1080 --listen 1088
+
+	ssocks --socks socksserv.com:1080 --uname admin --passwd abcde
+
+	ssocks -s socksserv.com:1080 -u admin -p abcde -l 1080 -b
+.SH "SEE ALSO"
+.BR ssocksd (1), ssocks-keygen (1), nsocks(1), rcsocks (1), rssocks (1)

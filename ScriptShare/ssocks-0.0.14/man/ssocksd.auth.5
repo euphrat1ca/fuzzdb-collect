@@ -1,0 +1,25 @@
+.\"   ssocksd.auth.5
+.\"
+.\"   Man page for ssocksd.auth
+.\"
+.TH ssocksd.auth 5 "3 Apr 2011" "ssocks" "ssocksd.auth manual"
+.SH NAME
+ssocksd.auth \- The password file for ssocksd
+.SH SYNOPSIS
+??
+.SH FILE FORMAT
+There is one entry per line, and each line has the format:
+
+username:password
+
+Thie field descriptions are:
+
+	username:	the name of the user
+	
+	password:	the user password ( in plain text, it's bad I know )
+
+All lines that start with a hash ("#") character are ignored, as are lines 
+containing only whitespace.
+
+.SH "SEE ALSO"
+.BR ssocksd (1), ssocksd.conf (5)

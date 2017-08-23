@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "Building MOCKS 0.0.2"
+
+echo "gcc -Wall -o mocks -lnsl socksd.c child.c misc.c error.c up_proxy.c"
+
+gcc -Wall -o mocks -lnsl src/socksd.c src/child.c src/misc.c src/error.c src/up_proxy.c

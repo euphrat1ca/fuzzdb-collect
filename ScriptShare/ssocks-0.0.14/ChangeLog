@@ -1,0 +1,15 @@
+2013/07/20
+	* Fix typo/grammar/spelling (thx to Benjamin Kerensa for the patch https://twitter.com/bkerensa)
+
+2012/02/04
+	* Release version v0.0.13
+	* Remove getline, remove some dangerous strcpy in config file and param
+	* Add bind address in ssocksd thx to init_js
+	* Release version v0.0.12
+	* Fix server read buffer corruption in Socks5Req thx to init-js
+	* Fix authentication error
+	* Fix issue with SSL
+
+2011/07/24
+	* Add some SSL support but no time to debug the software
+	* Try SSL on all soft seem ok

@@ -1,0 +1,33 @@
+.\"   rcsocks.1
+.\"
+.\"   Man page for rcsocks
+.\"
+.TH rcsocks 1 "16 Apr 2011" "rcsocks" "ssocks manual"
+.SH NAME
+rcsocks \- Get information about rcsocks
+.SH SYNOPSIS
+
+
+.SH DESCRIPTION
+.B rcsocks
+It's the client (server) in reverse mode works with rssocks
+
+.SH OPTIONS
+.IP "--verbose"
+Increase the verbose level, can be add twice for debug mode
+.IP "--background"
+Run in background
+.IP "--port port"
+Set port (where you connect on)
+.IP "--listen port"
+Set server listen port (where rssocks connect back)
+.SH "EXAMPLES"
+	src/rcsocks -p 1088 -l 1080
+
+In this config you run rssocks like this:
+
+	rssocks --socks rcsocksserv:1080
+
+and set your tool to connect through the socks5 server rcsocksserv:1088
+.SH "SEE ALSO"
+.BR ssocksd (1), ssocks-keygen (1), nsocks(1), rssocks (1)

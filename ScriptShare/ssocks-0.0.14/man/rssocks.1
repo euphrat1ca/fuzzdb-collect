@@ -1,0 +1,30 @@
+.\"   rssocks.1
+.\"
+.\"   Man page for socks
+.\"
+.TH rssocks 1 "16 Apr 2011" "rssocks" "rssocks manual"
+.SH NAME
+rssocks \- Get information about rssocks
+.SH SYNOPSIS
+
+
+.SH DESCRIPTION
+.B rssocks
+It's a reverse socks5 server, you set the socks arg (host:port)
+to your rcsocks instance. It connects back on and waits for request
+
+.SH OPTIONS
+.IP "--verbose"
+Increase the verbose level, can be add twice for debug mode
+.IP "--background"
+Run in background
+.IP "--ncon nb"
+Number of back connection you want 25 by default
+.IP "--socks host:port"
+Socks address (domaine or ip) and port
+
+.SH "EXAMPLES"
+	rssocks --socks socksserv.com:1080
+
+.SH "SEE ALSO"
+.BR rssocksd (1), rssocks-keygen (1), nsocks(1), rcsocks (1), rssocks (1)

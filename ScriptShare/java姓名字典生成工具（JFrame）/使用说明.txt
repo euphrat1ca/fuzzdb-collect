@@ -1,0 +1,13 @@
+1.在目录下的name.txt下输入自己要生成字典的姓名(支持多行)
+2.本软件自动生成8种格式的姓名,格式如下,可根据需要自动生成想要的格式
+wangdachui
+wdc
+wangdac
+wdachui
+wang.dachui
+dachui.wang
+dc.wang
+wang.dc
+3.运行start文件.选择你要生成的格式,整理完成后会在同目录生成一个Result.txt文件内
+
+有问题请联系:ceo@tom.com

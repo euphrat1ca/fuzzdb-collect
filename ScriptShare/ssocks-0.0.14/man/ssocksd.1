@@ -1,0 +1,58 @@
+.\"   ssocksd.1
+.\"
+.\"   Man page for nsocks
+.\"
+.TH ssocksd 1 "3 Apr 2011" "ssocks" "ssocksd manual"
+.SH NAME
+ssocksd \- Get information about ssocksd
+.SH SYNOPSIS
+.B ssocksd
+.SH DESCRIPTION
+.B ssocksd
+Socks5 server, implements RFC 1928 (SOCKS V5) and RFC 1929 
+(Authentication for SOCKS V5)
+
+Features:
+
+	- Configuration file
+
+	- Authentication file
+
+	- Generate a connection log file
+
+	- Daemon mode
+
+	- Server support bind mode
+
+
+
+.SH OPTIONS
+.IP "--verbose"
+Increase the verbose level, can be add twice for debug mode
+.IP "--daemon"
+Daemon mode, no ouput, and background
+.IP "--post port"
+Listening port
+.IP "--auth passwdfile"
+Password file see ssocksd.auth (5) for format
+.IP "--log logfile"
+If is set a user connection log file is write
+.IP "--config configfile"
+If is set the configuration is load see ssocksd.conf (5) for format
+	
+.SH "EXAMPLES"
+Listen on port 1080, no authentication, no log file
+
+	$ ssocksd
+
+Listen on port 8080, and ask for authentication with credential of file /etc/ssocksd.auth
+
+	$ ssocksd --auth /etc/ssocksd.auth --port 8080
+
+Load configuration file and execute the server in daemon mode 
+(if -d is after -f is bypass the option daemon of the config file)
+
+	$ ssocksd -f /etc/ssocksd.conf -d
+
+.SH "SEE ALSO"
+.BR socksd (1), nsocks (1), ssocks-keygen (1), ssocksd.auth (5), ssocksd.conf (5), rssocks (1)

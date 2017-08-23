@@ -1,0 +1,29 @@
+
+* Implement verbose mode logging
+
+* Resolve addesses to domain names in log
+
+* Add support for UDP requests
+
+* Add support for IPv6 requests
+
+* Should be able to report transfer rate and active connections, kill
+  specific connnections, etc.
+  
+* I'll probably use a non-blocking server architecture rathen than
+  spawning a new process for each connection
+  
+* Basic authentication will most certainly be implemented
+  
+* Some traffic control features will be available
+
+* The default UNIX directories will be used for instalation and a
+  makefile will be available
+  
+* Traffic control
+
+* Real-time stats displaying (uptime, connections, traffic, etc.)
+
+* Support for HTTP CONNECT method ???
+
+* Support remote administration and stats displaying via HTTP protocol

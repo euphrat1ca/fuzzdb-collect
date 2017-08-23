@@ -1,0 +1,172 @@
+HP/H3C and Huawei SNMP Weak Access to Critical Data
+===================================================
+
+http://grutztopia.jingojango.net/2012/10/hph3c-and-huawei-snmp-weak-access-to.html
+
+Overview
+--------
+
+HP/H3C and Huawei networking equipment suffers from a serious weakness in
+regards to their handling of Systems Network Management Protocol (SNMP)
+requests for protected h3c-user.mib and hh3c-user.mib objects.
+
+
+Identifiers
+-----------
+
+ US-CERT VU#225404
+ CVE-2012-3268
+
+
+Vendor release
+--------------
+
+ HP/H3C: https://h20565.www2.hp.com/portal/site/hpsc/public/kb/docDisplay/?docId=emr_na-c03515685&ac.admitted=1350939600802.876444892.492883150
+
+ Huawei: In the works
+
+
+Researcher
+----------
+
+ Kurt Grutzmacher
+ grutz <at> jingojango dot net
+ http://grutztopia.jingojango.net/
+ twitter: @grutz
+
+
+Details
+-------
+
+Huawei/H3C have two OIDs, 'old' and 'new':
+
+  old: 1.3.6.1.4.1.2011.10
+  new: 1.3.6.1.4.1.25506
+
+Most devices support both formats.
+
+The MIBs h3c-user.mib and hh3c-user.mib, for the purpose of this document,
+will be referred to as (h)h3c-user.mib. This MIB defines the internal 
+table and objects to "Manage configuration and Monitor running state for
+userlog feature."
+
+This means there are some cool objects with data in this MIB penetration
+testers or malicious actors would want to get their dirty little hands on.
+Most objects are only accessible with the read/write community string.
+
+In the revision history of (h)h3c-user.mib, version 2.0 modified the
+MAX-ACCESS from read-only to read-create the following objects within
+the (h)h3cUserInfoEntry sequence:
+
+  (h)h3cUserName
+  (h)h3cUserPassword
+  (h)h3cAuthMode
+  (h)h3cUserLevel
+
+The purpose of these objects are to provide the locally configured users
+to those with a valid SNMP community. After the change only those with
+the read-write community string should have access, however this was not
+the case and the code still retained the earlier access of read-only.
+
+So if you have the SNMP public community string then you have the ability
+to view these entries.
+
+
+Why this is impactful
+---------------------
+
+The (h)h3cUserPassword is presented in one of three formats as defined in
+the (h)h3cAuthMode object and mirrors how passwords are stored in the
+device configuration:
+
+  0 -- password simple, meaning cleartext
+  7 -- password cipher, meaning ciphertext
+  9 -- password sha-256, meaning one-way sha-256 hash
+
+SHA-256 is a recent addition and is not supported on all devices yet.
+
+On top of this the (h)h3cUserLevel can be 0 to 3 where 0 is limited
+access and 3 is full access.
+
+
+Globbing some users
+-------------------
+
+You must have an SNMP read-only or read-write string and access to the
+SNMP port (udp/161) for this to work:
+
+ $ snmpwalk –c public –v 1 $IP 1.3.6.1.4.1.2011.10.2.12.1.1.1
+
+or
+
+ $ snmpwalk –c public –v 1 $IP 1.3.6.1.4.1.25506.2.12.1.1.1
+
+
+Weaponizing
+-----------
+
+Files relevant to this disclosure:
+
+  hh3c-localuser-enum.rb - Metasploit auxiliary scanner module
+  snmp-h3c-login.nse - Nmap Scripting Engine module
+
+These will soon be posted to https://github.com/grutz/h3c-pt-tools and
+requested to be added to each tool.
+
+
+Mitigation
+----------
+
+By itself this is already bad but most users who do any of the following
+may already be protected:
+
+  1. Use complex SNMP community strings or disable SNMPv1
+  2. Have disabled the mib entries for (h)h3c-user
+  3. Block SNMP using access controls or firewalls
+  4. Do not define local users, use RADIUS or TACACS+
+
+More specific routines can be found in the vendor's release.
+
+
+Why this is a bigger problem
+----------------------------
+
+People make poor choices. They like to think their equipment won't rat
+them out so they use cleartext passwords on networking equipment.
+
+The cipher is an interesting one because it's basically an unknown...
+What, you think the only thing I had to share at Toorcon was SNMP and
+some cleartext credentials?
+
+
+Timeline
+--------
+
+June-ish 2012: Research begins after seeing something cool on a 
+  penetration test
+
+August 6, 2012: Contacted US-CERT to coordinate vendor disclosure,
+  VU#225404
+
+September 5, 2012: No response from H3C, contacted US-CERT again
+
+September 6, 2012: H3C (through US-CERT) requests more time, I state
+  intention to present findings at Toorcon (Oct 19/20, 2012) or disclose
+  if talk not accepted.
+
+September 18, 2012: Approved for Toorcon! Information goes up not long
+  after on Toorcon website.
+
+September 18-October 16, 2012: Build slides, work on tools, no contact
+  with US-CERT or vendors.
+
+October 16, 2012: HP contacts me directly asking that I not present this
+  information at Toorcon
+
+October 18, 2012: Publicly state agreement to cancel the Toorcon talk
+
+October 22, 2012: HP discloses! What what? Why bother putting any pressure
+  not to give the talk if you're gonna give everything out 2 days later?
+
+October 23, 2012: So I publish.
+

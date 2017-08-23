@@ -1,0 +1,46 @@
+.\"   ssocksd.conf.5
+.\"
+.\"   Man page for ssocksd.auth
+.\"
+.TH ssocksd.conf 5 "3 Apr 2011" "ssocks" "ssocksd.conf manual"
+.SH NAME
+ssocksd.conf \- The configuration file for ssocksd
+.SH SYNOPSIS
+??
+.SH FILE FORMAT
+The file consists of parameters of the form:
+
+	name = value
+
+The file is line-based that is, each newline-terminated line 
+represents either a comment or a parameter.
+
+Parameter names are not case sensitive
+
+All lines that start with a hash ("#") character are ignored, as are lines 
+containing only whitespace.
+
+.SH PARAMETERS
+Listening port
+
+	port = 1080
+
+Authentication file ( see ssocksd.auth (5) )
+
+	auth = /etc/ssocksd.auth
+
+
+Connection log file if is comment not connection log
+
+	log = /var/log/ssocksd.log
+
+Daemon mode (useless if run by a init script)
+
+	daemon = 1
+
+Verbosity you don't need it I thinks	
+
+	verbosity=0
+	
+.SH "SEE ALSO"
+.BR ssocksd (1), ssocksd.auth (5)

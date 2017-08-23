@@ -1,0 +1,44 @@
+.\"   nsocks.1
+.\"
+.\"   Man page for nsocks
+.\"
+.TH nsocks 1 "3 Apr 2011" "ssocks" "nsocks manual"
+.SH NAME
+nsocks \- Get information about nsocks
+.SH SYNOPSIS
+.B nsocks --socks socksaddr:socksport host port
+
+.B nsocks --socks socksaddr:socksport --listen port
+.SH DESCRIPTION
+.B nsocks
+Netcat like tool, which supports socks5 with username/password authentication.
+Actually close on EOF (CTRL-D)
+
+.SH OPTIONS
+.IP "--verbose"
+Increase the verbose level, can be add twice for debug mode
+.IP "--socks host:port"
+Socks address (domaine or ip) and port
+.IP "--socks host:port"
+Socks address (domaine or ip) and port
+.IP "--uname username"
+Set username
+.IP "--passwd password"
+Set password
+.IP "--listen port"
+Bind mode, open port on socks ans wait for incoming connection
+.SH "EXAMPLES"
+Connect to mywebserv.com on port 80 trough the server myrelay.com port 1080
+
+	$ nsocks --socks myrelay.com:1080 mywebserv.com 80
+
+Connect to mywebserv.com on port 80 trough the server myrelay.com port 1080 
+with login admin and password abcde
+
+	$ nsocks -s myrelay.com:1080 -u admin -p abcde mywebserv.com 80
+
+Open a listening socket on port 8080 on myrelay.com and wait a incoming connection	
+
+	$ nsocks -s myrelay.com:1080 -l 8080
+.SH "SEE ALSO"
+.BR socksd (1), ssocks-keygen (1), ssocksd (1) 

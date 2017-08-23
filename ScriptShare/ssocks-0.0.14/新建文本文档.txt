@@ -1,0 +1,10 @@
+root@bt:/opt/ssocks-0.0.13/src# ./ssocks
+sSocks Socks5 Server Relay v0.0.13
+Run a socks server on your localhost interface, and
+relay all data to the server specified in --socks
+Used to bypass browser limitation with authentication
+Usage:
+  ./ssocks --socks socksserv.com:1080
+  ./ssocks --socks localhost:1080 --listen 1088
+  ./ssocks --socks socksserv.com:1080 --uname admin --passwd abcde
+  ./ssocks -s socksserv.com:1080 -u admin -p abcde -l 1080 -b
