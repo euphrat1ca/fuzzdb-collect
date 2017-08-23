@@ -1,0 +1,41 @@
+<form name="uploadForm" method="post" enctype="multipart/form-data" action="http://www.hc-ib.net/kedit/upload_cgi/upload.php">
+<input type="hidden" name="fileName" id="fileName" value="404.php.a;a.jpg" />
+<input type="hidden" name="attachPath" id="fileName" value="news/pics/" />
+ 
+<select id="imageType" onchange="javascript:parent.KindImageType(this.value);document.getElementById('KE_IMAGEsubmitButton').focus();">
+<option value="1" selected="selected">本地</option>
+<option value="2">远程</option>
+</select>
+ 
+<input type="text" id="imgLink" value="http://" maxlength="255" style="width:95%;border:1px solid #555555;display:none;" />
+<input type="file" name="fileData" id="imgFile" size="14" style="border:1px solid #555555;" onclick="javascript:document.getElementById('imgLink').value='http://';" /></td>
+ 
+<input type="text" name="imgTitle" id="imgTitle" value="" maxlength="100" style="width:95%;border:1px solid #555555;" />
+<input type="text" name="imgWidth" id="imgWidth" value="0" maxlength="4" style="width:40px;border:1px solid #555555;" />
+<input type="text" name="imgHeight" id="imgHeight" value="0" maxlength="4" style="width:40px;border:1px solid #555555;" />
+<input type="text" name="imgBorder" id="imgBorder" value="0" maxlength="1" style="width:20px;border:1px solid #555555;" />
+<select id="imgAlign" name="imgAlign">
+<option value="">对齐方式</option>
+<option value="baseline">baseline</option>
+<option value="top">top</option>
+<option value="middle">middle</option>
+<option value="bottom">bottom</option>
+<option value="texttop">texttop</option>
+<option value="absmiddle">absmiddle</option>
+<option value="absbottom">absbottom</option>
+<option value="left">left</option>
+<option value="right">right</option>
+</select>
+<input type="text" name="imgHspace" id="imgHspace" value="0" maxlength="1" style="width:20px;border:1px solid #555555;" />
+<input type="text" name="imgVspace" id="imgVspace" value="0" maxlength="1" style="width:20px;border:1px solid #555555;" />
+<input type="submit" name="button" id="KE_IMAGEsubmitButton" value="确定" style="border:1px solid #555555;background-color:#AAAAAA;" /></form>
+
+上传以后只需要右键查看源代码即可得到上传后的地址
+上面的部分是直接从编辑器上面拷贝修改的，其实还可以这样的：
+
+<form name="uploadForm" method="post" enctype="multipart/form-data" action="http://www.hc-ib.net/kedit/upload_cgi/upload.php">
+<input type="text" name="fileName" value="404.php.a;a.jpg" />
+<input type="hidden" name="attachPath" value="news/pics/" />
+<input type="file" name="fileData" size="14" /></td>
+<input type="submit" name="button" value="确定" />
+</form> 

