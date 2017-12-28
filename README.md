@@ -2,6 +2,9 @@
 ### 项目简介
 **Scanners Box**是一个集合github平台上的安全行业从业者自研开源扫描器的仓库，包括子域名枚举、数据库漏洞扫描、弱口令或信息泄漏扫描、端口扫描、指纹识别以及其他大型扫描器或模块化扫描器，**同时该仓库只收录各位网友自己编写的一般性开源扫描器，类似awvs、nmap、w3af等知名扫描工具不收录**。
 ***
+#### 恶意软件
+- https://github.com/deadPix3l/CryptSky/    （勒索软件）
+
 #### DDOS防护
 - https://github.com/ywjt/Dshield
 #### waf开源及规则
@@ -27,6 +30,7 @@
 - http://llvm.org/docs/LibFuzzer.html
 #### 子域名枚举扫描器或爆破工具
 - https://github.com/n4xh4ck5/N4xD0rk （利用搜索引擎来搜集子域名，可以使用西班牙语搜集）
+- https://github.com/jonluca/Anubis
 - https://github.com/lijiejie/subDomainsBrute (lijiejie开发的一款使用广泛的子域名爆破枚举工具)
 - https://github.com/ring04h/wydomain (猪猪侠开发的一款域名收集全面、精准的子域名枚举工具)
 - https://github.com/le4f/dnsmaper (子域名枚举爆破工具以及地图位置标记)
@@ -283,5 +287,6 @@
 - https://github.com/alienwithin/OWASP-mth3l3m3nt-framework (渗透测试辅助工具，综合利用框架）
 #### 高级持续性威胁(APT)相关工具
 - https://github.com/Neo23x0/Loki (一款APT入侵痕迹扫描器)
+- https://github.com/r00t-3xp10it/FakeImageExploiter  （图片后门捆绑利用工具 – FakeImageExploiter）
 #### 工控安全相关工具
 - https://github.com/w3h/icsmaster/tree/master/nse （ICS设备nmap扫描脚本)
