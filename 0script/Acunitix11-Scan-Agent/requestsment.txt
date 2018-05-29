@@ -1,0 +1,3 @@
+requests == 2.18.4
+tableprint == 0.7.1
+openpyxl == 2.5.0
